@@ -39,17 +39,9 @@ print(len(test_data[0]))     # ncols: 3
 train_docs = [(tokenize(row[1]), row[2]) for row in train_data[1:]]
 test_docs = [(tokenize(row[1]), row[2]) for row in test_data[1:]]
 
-pprint(train_docs[0])
-
-tokens = [t for d in train_docs for t in d[0]]
-print(len(tokens))
-
-
-
-
 #Training data의 token 모으기
-# tokens = [t for d in train_docs for t in d[0]]
-# text = nltk.Text(tokens)
+tokens = [t for d in train_docs for t in d[0]]
+text = nltk.Text(tokens)
 # pprint(text.vocab().most_common(10))
 #
 # # 텍스트간의 연어 빈번하게 등장하는 단어 구하기

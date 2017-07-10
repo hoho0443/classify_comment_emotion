@@ -1,11 +1,5 @@
-from konlpy.tag import Komoran
-from konlpy.tag import Hannanum
 from konlpy.tag import Twitter
-from pprint import pprint
 import nltk
-from matplotlib import font_manager, rc
-from collections import namedtuple
-from gensim.models import doc2vec
 
 twitter = Twitter()
 
@@ -26,7 +20,7 @@ def term_exists(doc):
     return {'exists({})'.format(word): (word in set(doc)) for word in selected_words}
 
 # 트래이닝 데이터와 테스트 데이터를 읽기
-train_data = read_data('data/ratings_train.txt')
+train_data = read_data('data/ratings_test.txt')
 test_data = read_data('data/ratings_test.txt')
 
 # row, column의 수가 제대로 읽혔는지 확인
@@ -41,7 +35,7 @@ test_docs = [(tokenize(row[1]), row[2]) for row in test_data[1:]]
 
 #Training data의 token 모으기
 tokens = [t for d in train_docs for t in d[0]]
-text = nltk.Text(tokens)
+text = nltk.Text(train_docs)
 # pprint(text.vocab().most_common(10))
 #
 # # 텍스트간의 연어 빈번하게 등장하는 단어 구하기

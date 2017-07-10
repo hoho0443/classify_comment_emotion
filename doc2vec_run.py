@@ -21,7 +21,7 @@ def tokenize(doc):
 
 
 # 실제 구동 데이터를 읽기
-run_data = read_data('data/comment.txt')
+run_data = read_data('data/ratings_run.txt')
 
 # 형태소 분류
 run_docs = [(tokenize(row[1]), row[2]) for row in run_data[1:]]
@@ -44,5 +44,3 @@ filename = 'model/finalized_model.sav'
 loaded_model = pickle.load(open(filename, 'rb'))
 print(loaded_model.predict(run_x[0].reshape(1, -1)))
 print(loaded_model.predict(run_x[1].reshape(1, -1)))
-print(loaded_model.predict(run_x[2].reshape(1, -1)))
-print(loaded_model.predict(run_x[3].reshape(1, -1)))
